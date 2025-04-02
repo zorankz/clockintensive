@@ -20,10 +20,11 @@ app.post('/consultar', async (req, res) => {
     try {
         // Lanzar Puppeteer con la ruta de Chromium en Render
         const browser = await puppeteer.launch({
-            executablePath: '/usr/bin/chromium',  // Ruta a Chromium en Render
-            headless: true,  // Ejecutar en segundo plano
-            args: ['--no-sandbox', '--disable-setuid-sandbox'] // Opciones necesarias para Render
-        });
+    executablePath: '/opt/render/project/.heroku/chromium/bin/chromium',  // Ruta correcta para Chromium en Render
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox']  // Necesario en Render
+});
+
 
         const page = await browser.newPage();
         await page.goto('https://migraconnect.us/eoir-tracker');
