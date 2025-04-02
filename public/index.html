@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MigraBot Consulta</title>
+</head>
+<body style="font-family:sans-serif; text-align:center; margin-top:50px;">
+  <h1>Consultar Reloj EOIR</h1>
+  <input type="text" id="alienNumber" placeholder="Número A" />
+  <button onclick="consultar()">Consultar</button>
+  <p id="resultado"></p>
+
+  <script>
+    async function consultar() {
+      const alienNumber = document.getElementById('alienNumber').value;
+      const res = await fetch('/consultar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ alienNumber })
+      });
+      const data = await res.json();
+      document.getElementById('resultado').innerText = data.reloj || data.error;
+    }
+  </script>
+</body>
+</html>
