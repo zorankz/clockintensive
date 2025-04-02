@@ -20,7 +20,7 @@ app.post('/consultar', async (req, res) => {
     try {
         // Lanzar Puppeteer con la ruta de Chromium en Render
         const browser = await puppeteer.launch({
-    executablePath: '/opt/render/project/.heroku/chromium/bin/chromium',  // Ruta correcta para Chromium en Render
+    executablePath: '/usr/bin/chromium',  // Ruta correcta para Chromium en Render
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox']  // Necesario en Render
 });
